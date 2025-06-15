@@ -6,6 +6,10 @@ Poke Explorer é um aplicativo iOS desenvolvido com SwiftUI que permite explorar
 - Karen Ubial
 - Helena Carvalho
 
+## Vídeo de Apresentação
+
+https://youtu.be/N3pwmJlltOw 
+
 ## Tecnologias Utilizadas
 
 - **Swift**
