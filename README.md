@@ -1,40 +1,63 @@
-# Poke Explorer
+# 🧭 Poke Explorer
 
-Poke Explorer é um aplicativo iOS desenvolvido com SwiftUI que permite explorar Pokémons, visualizar detalhes e favoritar seus preferidos. O app também armazena os Pokémons favoritos localmente utilizando Core Data.
+O **Poke Explorer** é um aplicativo iOS criado com **SwiftUI** que permite ao usuário explorar Pokémons através da [PokeAPI](https://pokeapi.co), visualizar detalhes individuais e favoritar seus preferidos. Os dados dos favoritos são armazenados localmente usando **Core Data** com autenticação básica por usuário.
+
+---
 
 ## Desenvolvedoras
+
 - Karen Ubial
 - Helena Carvalho
 
+---
+
 ## Vídeo de Apresentação
 
-https://youtu.be/N3pwmJlltOw 
+https://youtu.be/N3pwmJlltOw
 
-## Tecnologias Utilizadas
+## 📱 Descrição Geral do Aplicativo
 
-- **Swift**
-- **SwiftUI**
-- **Combine**
-- **Core Data**
-- **PokeAPI** – [https://pokeapi.co](https://pokeapi.co)
+- Listagem dos Pokémons obtidos da PokeAPI.
+- Visualização de detalhes de cada Pokémon.
+- Funcionalidade de favoritar/desfavoritar Pokémons.
+- Armazenamento dos favoritos por usuário com Core Data.
+- Interface amigável, minimalista e com animações sutis ao favoritar/desfavoritar.
 
-## Funcionalidades
+---
 
-- 🔍 Lista de Pokémons com imagens.
-- 📄 Tela de detalhes com mais informações do Pokémon.
-- ⭐ Favoritar e **desfavoritar** Pokémons com animação.
-- 💾 Armazenamento local dos favoritos com Core Data.
-- 👤 Associação de favoritos por usuário (relacionamento entre entidades no Core Data).
+## 🌐 Escolha da API
 
-## Arquitetura
+### API Utilizada
 
-O app segue o padrão MVVM (Model-View-ViewModel), com os seguintes componentes principais:
+[PokeAPI](https://pokeapi.co)
 
-- `PokemonAPIService.swift`: Responsável pelas chamadas HTTP para a PokeAPI.
-- `DetalhesPokemonViewModel.swift`: Gerencia o estado da tela de detalhes.
-- `FavoritosViewModel.swift`: Gerencia os dados da tela de favoritos.
-- `FavoritoService.swift`: Gerencia a persistência de dados com Core Data.
-- `Usuario`: Entidade que representa o usuário no Core Data.
-- `Favorito`: Entidade que representa os Pokémons favoritados.
+### Justificativa
 
+- Gratuita, pública e sem autenticação.
+- Ricamente documentada.
+- Retorna dados relevantes: nome, ID, sprites (imagens), tipos, etc.
 
+### Como foi usada
+
+- `https://pokeapi.co/api/v2/pokemon?limit=50`: lista básica.
+- `https://pokeapi.co/api/v2/pokemon/{nome}`: detalhes do Pokémon.
+
+### Dados utilizados
+
+- Nome
+- ID
+- Imagem (`sprites.front_default`)
+- Tipos
+- Altura, peso e outros atributos (em tela de detalhes)
+
+---
+
+## 🧱 Arquitetura do Aplicativo
+
+O aplicativo segue a arquitetura **MVVM (Model - View - ViewModel)**:
+
+```plaintext
++-------------------+      +---------------------------+      +----------------------------+
+|      View         | ---> |        ViewModel          | ---> |           Model           |
+| SwiftUI Screens   |      | Lógica de negócio e dados |      | API, CoreData, DTOs       |
++-------------------+      +---------------------------+      +----------------------------+
